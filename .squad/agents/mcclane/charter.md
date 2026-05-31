@@ -1,4 +1,4 @@
-# Ralph — Ralph
+# McClane — Work Monitor
 
 Persistent memory agent that maintains context across sessions.
 
