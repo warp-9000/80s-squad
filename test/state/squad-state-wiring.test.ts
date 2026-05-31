@@ -118,14 +118,14 @@ describe('CharterCompiler with SquadState', () => {
     expect(names).toEqual(['eecom', 'retro']);
   });
 
-  it('compileAll skips scribe and _ prefixed agents', async () => {
-    sp.writeSync(`${ROOT}/.squad/agents/scribe/charter.md`, '# Scribe\n## Identity\n- **Name:** Scribe\n');
+  it('compileAll skips miyagi and _ prefixed agents', async () => {
+    sp.writeSync(`${ROOT}/.squad/agents/miyagi/charter.md`, '# Miyagi\n## Identity\n- **Name:** Miyagi\n');
     sp.writeSync(`${ROOT}/.squad/agents/_alumni/charter.md`, '# Alumni\n');
     const compiler = new CharterCompiler(sp, state);
     const charters = await compiler.compileAll(ROOT);
 
     const names = charters.map(c => c.name);
-    expect(names).not.toContain('scribe');
+    expect(names).not.toContain('miyagi');
     expect(names).not.toContain('_alumni');
   });
 

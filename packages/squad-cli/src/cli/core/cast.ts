@@ -477,7 +477,7 @@ function generateHistory(member: CastMember, projectDescription: string): string
 // ── Built-in agents ────────────────────────────────────────────────
 
 function scribeMember(): CastMember {
-  return { name: 'Scribe', role: 'Session Logger', scope: 'Maintaining decisions.md, cross-agent context sharing, orchestration logging, session logging, git commits', emoji: '📋' };
+  return { name: 'Miyagi', role: 'Session Logger', scope: 'Maintaining decisions.md, cross-agent context sharing, orchestration logging, session logging, git commits', emoji: '📋' };
 }
 
 function scribeCharter(): string {
@@ -486,7 +486,7 @@ function scribeCharter(): string {
 }
 
 function ralphMember(): CastMember {
-  return { name: 'Ralph', role: 'Work Monitor', scope: 'Work queue tracking, backlog management, keep-alive', emoji: '🔄' };
+  return { name: 'McClane', role: 'Work Monitor', scope: 'Work queue tracking, backlog management, keep-alive', emoji: '🔄' };
 }
 
 function ralphCharter(): string {
@@ -609,10 +609,10 @@ export async function createTeam(teamRoot: string, proposal: CastProposal): Prom
   // Collect all members (proposal + built-ins)
   const allMembers = [...proposal.members];
 
-  const hasScribe = proposal.members.some(m => /scribe/i.test(m.name));
+  const hasScribe = proposal.members.some(m => /miyagi/i.test(m.name));
   if (!hasScribe) allMembers.push(scribeMember());
 
-  const hasRalph = proposal.members.some(m => /ralph/i.test(m.name));
+  const hasRalph = proposal.members.some(m => /mcclane/i.test(m.name));
   if (!hasRalph) allMembers.push(ralphMember());
 
   const hasRai = proposal.members.some(m => /Rai/i.test(m.name));
@@ -625,9 +625,9 @@ export async function createTeam(teamRoot: string, proposal: CastProposal): Prom
 
     const charterPath = join(agentDir, 'charter.md');
     let charter: string;
-    if (member.name === 'Scribe' && !hasScribe) {
+    if (member.name === 'Miyagi' && !hasScribe) {
       charter = scribeCharter();
-    } else if (member.name === 'Ralph' && !hasRalph) {
+    } else if (member.name === 'McClane' && !hasRalph) {
       charter = ralphCharter();
     } else if (member.name === 'Rai' && !hasRai) {
       charter = RaiCharter();
@@ -789,15 +789,15 @@ export function formatCastSummary(proposal: CastProposal): string {
     lines.push(`${m.emoji}  ${nameCol} — ${roleCol} ${m.scope}`);
   }
 
-  // Always show Scribe and Ralph in the summary
-  const hasScribe = proposal.members.some(m => /scribe/i.test(m.name));
+  // Always show Miyagi and McClane in the summary
+  const hasScribe = proposal.members.some(m => /miyagi/i.test(m.name));
   if (!hasScribe) {
-    lines.push(`📋  ${'Scribe'.padEnd(10)} — ${'(silent)'.padEnd(15)} Memory, decisions, session logs`);
+    lines.push(`📋  ${'Miyagi'.padEnd(10)} — ${'(silent)'.padEnd(15)} Memory, decisions, session logs`);
   }
 
-  const hasRalph = proposal.members.some(m => /ralph/i.test(m.name));
+  const hasRalph = proposal.members.some(m => /mcclane/i.test(m.name));
   if (!hasRalph) {
-    lines.push(`🔄  ${'Ralph'.padEnd(10)} — ${'(monitor)'.padEnd(15)} Work queue, backlog, keep-alive`);
+    lines.push(`🔄  ${'McClane'.padEnd(10)} — ${'(monitor)'.padEnd(15)} Work queue, backlog, keep-alive`);
   }
 
   const hasRai = proposal.members.some(m => /Rai/i.test(m.name));

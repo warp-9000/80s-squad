@@ -74,7 +74,7 @@ export class BoardCapability implements WatchCapability {
                   execFile(
                     'gh',
                     ['issue', 'close', String(item.content!.number!), '--comment',
-                     '🤖 Ralph: Auto-closing — issue has been in Done for >3 days.'],
+                     '🤖 McClane: Auto-closing — issue has been in Done for >3 days.'],
                     { maxBuffer: 5 * 1024 * 1024 },
                     (err) => (err ? reject(err) : resolve()),
                   );

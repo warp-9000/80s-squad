@@ -34,7 +34,7 @@ Before spawning an agent, determine which model to use. Check these layers in or
 | Copilot SDK Expert | `claude-sonnet-4.6` | Technical analysis that often touches code | Pure research → `claude-haiku-4.5` |
 | Designer / Visual | `claude-opus-4.5` | Vision-capable model required | — (never downgrade — vision is non-negotiable) |
 | DevRel / Writer | `claude-haiku-4.5` | Docs and writing — not code | — |
-| Scribe / Logger | `claude-haiku-4.5` | Mechanical file ops — cheapest possible | — (never bump Scribe) |
+| Miyagi / Logger | `claude-haiku-4.5` | Mechanical file ops — cheapest possible | — (never bump Miyagi) |
 | Git / Release | `claude-haiku-4.5` | Mechanical ops — changelogs, tags, version bumps | — (never bump mechanical ops) |
 
 **Task complexity adjustments** (apply at most ONE — no cascading):
@@ -87,7 +87,7 @@ When spawning, include the model in your acknowledgment:
 ```
 🔧 Fenster (claude-sonnet-4.6) — refactoring auth module
 🎨 Redfoot (claude-opus-4.5 · vision) — designing color system
-📋 Scribe (claude-haiku-4.5 · fast) — logging session
+📋 Miyagi (claude-haiku-4.5 · fast) — logging session
 ⚡ Keaton (claude-opus-4.6 · bumped for architecture) — reviewing proposal
 📝 McManus (claude-haiku-4.5 · fast) — updating docs
 ```

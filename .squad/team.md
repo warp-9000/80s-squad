@@ -32,8 +32,8 @@
 | DSKY | TUI Engineer | `.squad/agents/dsky/charter.md` | ✅ Active |
 | Sims | E2E Test Engineer | `.squad/agents/sims/charter.md` | ✅ Active |
 | Handbook | SDK Usability | `.squad/agents/handbook/charter.md` | ✅ Active |
-| Scribe | Session Logger | `.squad/agents/scribe/charter.md` | 📋 Silent |
-| Ralph | Work Monitor | — | 🔄 Monitor |
+| Miyagi | Session Logger | `.squad/agents/miyagi/charter.md` | 📋 Silent |
+| McClane | Work Monitor | — | 🔄 Monitor |
 
 ## Coding Agent
 

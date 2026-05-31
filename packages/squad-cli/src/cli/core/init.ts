@@ -209,14 +209,14 @@ export async function runInit(dest: string, options: RunInitOptions = {}): Promi
     projectName: path.basename(dest) || 'my-project',
     agents: [
       {
-        name: 'scribe',
+        name: 'miyagi',
         role: 'scribe',
-        displayName: 'Scribe',
+        displayName: 'Miyagi',
       },
       {
-        name: 'ralph',
+        name: 'mcclane',
         role: 'ralph',
-        displayName: 'Ralph',
+        displayName: 'McClane',
       },
       {
         name: 'Rai',

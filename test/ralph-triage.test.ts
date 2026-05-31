@@ -79,10 +79,10 @@ describe('ralph triage parser helpers', () => {
       expect(roster[0]!.label).toBe('squad:tony-stark-iron-man');
     });
 
-    it('filters out Scribe and Ralph', () => {
+    it('filters out Miyagi and McClane', () => {
       const roster = parseRoster(TEAM_MD);
-      expect(roster.some((member) => member.name === 'Scribe')).toBe(false);
-      expect(roster.some((member) => member.name === 'Ralph')).toBe(false);
+      expect(roster.some((member) => member.name === 'Miyagi')).toBe(false);
+      expect(roster.some((member) => member.name === 'McClane')).toBe(false);
     });
 
     it('returns empty array for empty roster', () => {

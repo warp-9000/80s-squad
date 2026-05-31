@@ -19,7 +19,7 @@ Analyze conversations and propose improvements to squad knowledge based on what 
 
 **Reflect complements existing Squad knowledge systems:**
 
-1. **`.squad/agents/{agent}/history.md`** — Permanent learnings from completed work (append-only; each agent updates their own file; Scribe propagates cross-agent updates)
+1. **`.squad/agents/{agent}/history.md`** — Permanent learnings from completed work (append-only; each agent updates their own file; Miyagi propagates cross-agent updates)
 2. **`.squad/decisions.md`** — Team-wide decisions that all agents respect
 3. **`reflect` skill** — Captures in-flight learnings from conversations that may graduate to history.md or decisions.md
 

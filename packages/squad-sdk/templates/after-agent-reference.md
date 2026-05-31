@@ -5,11 +5,11 @@
 <!-- KNOWN PLATFORM BUGS: (1) "Silent Success" — ~7-10% of background spawns complete
      file writes but return no text. Mitigated by RESPONSE ORDER + filesystem checks.
      (2) "Server Error Retry Loop" — context overflow after fan-out. Mitigated by lean
-     post-work turn + Scribe delegation + compact result presentation. -->
+     post-work turn + Miyagi delegation + compact result presentation. -->
 
-**⚡ Keep the post-work turn LEAN.** Coordinator's job: (1) present compact results, (2) spawn Scribe. That's ALL. No orchestration logs, no decision consolidation, no heavy file I/O.
+**⚡ Keep the post-work turn LEAN.** Coordinator's job: (1) present compact results, (2) spawn Miyagi. That's ALL. No orchestration logs, no decision consolidation, no heavy file I/O.
 
-**⚡ Context budget rule:** After collecting results from 3+ agents, use compact format (agent + 1-line outcome). Full details go in orchestration log via Scribe.
+**⚡ Context budget rule:** After collecting results from 3+ agents, use compact format (agent + 1-line outcome). Full details go in orchestration log via Miyagi.
 
 After each batch of agent work:
 
@@ -22,16 +22,16 @@ After each batch of agent work:
 
 3. **Show compact results:** `{emoji} {Name} — {1-line summary of what they did}`
 
-4. **Spawn Scribe** (background, never wait). Only if agents ran or inbox has files:
+4. **Spawn Miyagi** (background, never wait). Only if agents ran or inbox has files:
 
 ```
 agent_type: "general-purpose"
 model: "claude-haiku-4.5"
 mode: "background"
-name: "scribe"
-description: "📋 Scribe: Log session & merge decisions"
+name: "miyagi"
+description: "📋 Miyagi: Log session & merge decisions"
 prompt: |
-  You are the Scribe. Read .squad/agents/scribe/charter.md.
+  You are the Miyagi. Read .squad/agents/miyagi/charter.md.
   TEAM ROOT: {team_root}
   CURRENT_DATETIME: <resolved CURRENT_DATETIME literal>
   STATE_BACKEND: {state_backend}
@@ -61,4 +61,4 @@ prompt: |
 
 5. **Immediately assess:** Does anything trigger follow-up work? Launch it NOW.
 
-6. **Ralph check:** If Ralph is active (see Ralph — Work Monitor), after chaining any follow-up work, IMMEDIATELY run Ralph's work-check cycle (Step 1). Do NOT stop. Do NOT wait for user input. Ralph keeps the pipeline moving until the board is clear.
+6. **McClane check:** If McClane is active (see McClane — Work Monitor), after chaining any follow-up work, IMMEDIATELY run McClane's work-check cycle (Step 1). Do NOT stop. Do NOT wait for user input. McClane keeps the pipeline moving until the board is clear.

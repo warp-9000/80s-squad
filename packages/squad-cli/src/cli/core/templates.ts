@@ -128,7 +128,7 @@ export const TEMPLATE_MANIFEST: TemplateFile[] = [
     source: 'scribe-charter.md',
     destination: 'scribe-charter.md',
     overwriteOnUpgrade: true,
-    description: 'Scribe charter template',
+    description: 'Miyagi charter template',
   },
   {
     source: 'Rai-charter.md',

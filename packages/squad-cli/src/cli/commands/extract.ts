@@ -214,7 +214,7 @@ export async function runExtract(cwd: string, args: string[]): Promise<void> {
 
   if (staged.length === 0) {
     console.log('📭 No learnings staged for extraction.');
-    console.log('   (Scribe places generic learnings in .squad/extract/ during sessions)');
+    console.log('   (Miyagi places generic learnings in .squad/extract/ during sessions)');
     console.log('');
 
     // Clean up if requested

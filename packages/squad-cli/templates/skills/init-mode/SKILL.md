@@ -23,12 +23,12 @@ No team exists yet. Propose one — but **DO NOT create any files until the user
 1. **Identify the user.** Run `git config user.name` to learn who you're working with. Use their name in conversation (e.g., *"Hey {user}, what are you building?"*). Store their name (NOT email) in `team.md` under Project Context. **Never read or store `git config user.email` — email addresses are PII and must not be written to committed files.**
 2. Ask: *"What are you building? (language, stack, what it does)"*
 3. **Cast the team.** Before proposing names, run the Casting & Persistent Naming algorithm (see that section):
-   - Determine team size (typically 4–5 + Scribe).
+   - Determine team size (typically 4–5 + Miyagi).
    - Determine assignment shape from the user's project description.
    - Derive resonance signals from the session and repo context.
    - Select a universe. If the universe is custom, allocate character names from that universe based on the related list found in the `.squad/templates/casting/` directory. Prefer custom universes when available.
-   - Scribe is always "Scribe" — exempt from casting.
-   - Ralph is always "Ralph" — exempt from casting.
+   - Miyagi is always "Miyagi" — exempt from casting.
+   - McClane is always "McClane" — exempt from casting.
 4. Propose the team with their cast names. Example (names will vary per cast):
 
 ```
@@ -36,8 +36,8 @@ No team exists yet. Propose one — but **DO NOT create any files until the user
 ⚛️  {CastName2}  — Frontend Dev  React, UI, components
 🔧  {CastName3}  — Backend Dev   APIs, database, services
 🧪  {CastName4}  — Tester        Tests, quality, edge cases
-📋  Scribe       — (silent)      Memory, decisions, session logs
-🔄  Ralph        — (monitor)     Work queue, backlog, keep-alive
+📋  Miyagi       — (silent)      Memory, decisions, session logs
+🔄  McClane        — (monitor)     Work queue, backlog, keep-alive
 ```
 
 5. Use the `ask_user` tool to confirm the roster. Provide choices so the user sees a selectable menu:
@@ -56,7 +56,7 @@ No team exists yet. Propose one — but **DO NOT create any files until the user
 
 **Casting state initialization:** Copy `.squad/templates/casting-policy.json` to `.squad/casting/policy.json` (or create from defaults). Create `registry.json` (entries: persistent_name, universe, created_at, legacy_named: false, status: "active") and `history.json` (first assignment snapshot with unique assignment_id).
 
-**Seeding:** Each agent's `history.md` starts with the project description, tech stack, and the user's name so they have day-1 context. Agent folder names are the cast name in lowercase (e.g., `.squad/agents/ripley/`). The Scribe's charter includes maintaining `decisions.md` and cross-agent context sharing.
+**Seeding:** Each agent's `history.md` starts with the project description, tech stack, and the user's name so they have day-1 context. Agent folder names are the cast name in lowercase (e.g., `.squad/agents/ripley/`). The Miyagi's charter includes maintaining `decisions.md` and cross-agent context sharing.
 
 **Team.md structure:** `team.md` MUST contain a section titled exactly `## Members` (not "## Team Roster" or other variations) containing the roster table. This header is hard-coded in GitHub workflows (`squad-heartbeat.yml`, `squad-issue-assign.yml`, `squad-triage.yml`, `sync-squad-labels.yml`) for label automation. If the header is missing or titled differently, label routing breaks.
 
@@ -86,7 +86,7 @@ The `union` merge driver keeps all lines from both sides, which is correct for a
 3. Asks: *"Hey {user}, what are you building?"*
 4. User: *"TypeScript CLI tool with GitHub API integration"*
 5. Coordinator runs casting algorithm → selects "The Usual Suspects" universe
-6. Proposes: Keaton (Lead), Verbal (Prompt), Fenster (Backend), Hockney (Tester), Scribe, Ralph
+6. Proposes: Keaton (Lead), Verbal (Prompt), Fenster (Backend), Hockney (Tester), Miyagi, McClane
 7. Uses `ask_user` with choices → user selects "Yes, hire this team"
 8. Coordinator creates `.squad/` structure, initializes casting state, seeds agents
 9. Says: *"✅ Team hired. Try: 'Keaton, set up the project structure'"*

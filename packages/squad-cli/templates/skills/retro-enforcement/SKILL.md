@@ -62,7 +62,7 @@ $workQueue = Get-PendingIssues | Sort-Object -Property Priority
 When `Test-RetroOverdue` returns `$true`:
 
 1. **Do not start any other work** until the retro completes
-2. **Spawn the facilitator agent** (Scribe or designated) with retro mode
+2. **Spawn the facilitator agent** (Miyagi or designated) with retro mode
 3. **Wait for the log file** to be written to `.squad/log/`
 4. **Verify action items** were created as GitHub Issues (not markdown)
 5. **Resume normal round** after retro log confirmed
@@ -116,7 +116,7 @@ From production data in tamirdresher/tamresearch1:
 - Weekly squads: window = 7 days
 - Bi-weekly squads: window = 14 days
 
-### Ralph integration example
+### McClane integration example
 
 ```powershell
 # ralph-watch.ps1 — round start hook

@@ -9,7 +9,7 @@ source: "manual"
 # Skill: Cross-Machine Coordination Pattern
 
 **Skill ID:** `cross-machine-coordination`  
-**Owner:** Ralph (Work Monitor)  
+**Owner:** McClane (Work Monitor)  
 **Squad Integration:** All agents  
 **Status:** Specification (ready for implementation)  
 
@@ -53,7 +53,7 @@ git commit -m "Cross-machine task: GPU voice cloning [squad:machine-devbox]"
 git push origin main
 ```
 
-Ralph on DevBox will:
+McClane on DevBox will:
 1. Pull the task on next cycle (5-10 min)
 2. Validate schema & command whitelist
 3. Execute the GPU workload
@@ -64,12 +64,12 @@ Ralph on DevBox will:
 
 ### For Task Executors (DevBox, Azure VMs)
 
-Ralph automatically watches `.squad/cross-machine/tasks/` for work targeted at this machine.
+McClane automatically watches `.squad/cross-machine/tasks/` for work targeted at this machine.
 
 **On each cycle (5-10 min):**
 
 ```python
-# Pseudo-code (Ralph implementation)
+# Pseudo-code (McClane implementation)
 1. git pull origin main
 2. Load all .yaml files in .squad/cross-machine/tasks/
 3. Filter for status=pending AND target_machine=HOSTNAME
@@ -96,7 +96,7 @@ gh issue create \
   --label "urgent"
 ```
 
-Ralph on DevBox will:
+McClane on DevBox will:
 1. Detect issue with `squad:machine-devbox` label
 2. Parse task from issue body
 3. Execute task
@@ -187,7 +187,7 @@ All tasks go through:
 
 5. **Audit Trail**
    - All executions logged to git
-   - Commit signed with Ralph's key
+   - Commit signed with McClane's key
    - Result stored immutably
 
 ### Threat Mitigations
@@ -204,7 +204,7 @@ All tasks go through:
 
 ## Configuration
 
-Ralph reads config from `.squad/config.json`:
+McClane reads config from `.squad/config.json`:
 
 ```json
 {
@@ -257,10 +257,10 @@ git commit -m "Task: GPU voice cloning [squad:machine-devbox]"
 git push origin main
 ```
 
-**3. DevBox Ralph (5 min later):**
+**3. DevBox McClane (5 min later):**
 
 ```
-[Ralph Watch Cycle]
+[McClane Watch Cycle]
 - Pulled origin/main
 - Detected: gpu-voice-clone-001 (status: pending, target: devbox)
 - Validation: ✅ Schema OK, command whitelisted
@@ -271,7 +271,7 @@ git push origin main
 - Committing & pushing...
 ```
 
-**4. Laptop Ralph (next cycle) sees result:**
+**4. Laptop McClane (next cycle) sees result:**
 
 ```yaml
 # .squad/cross-machine/results/gpu-voice-clone-001.yaml
@@ -303,7 +303,7 @@ gh issue create \
   --label "urgent"
 ```
 
-**DevBox Ralph detects → executes → comments:**
+**DevBox McClane detects → executes → comments:**
 
 ```
 ✅ Executed on devbox at 2026-03-14 15:47:00
@@ -349,7 +349,7 @@ If a task doesn't complete within timeout:
 
 If git push/pull fails:
 
-- Ralph retries on next cycle
+- McClane retries on next cycle
 - Tasks queue locally until connectivity restored
 - No tasks lost (stored in local repo)
 
@@ -377,7 +377,7 @@ cat .squad/cross-machine/results/{task-id}.yaml
 git log --oneline .squad/cross-machine/ | head -20
 ```
 
-### Monitor Ralph Cycles
+### Monitor McClane Cycles
 
 ```bash
 tail -f .squad/log/ralph-watch.log | grep "cross-machine"
@@ -385,12 +385,12 @@ tail -f .squad/log/ralph-watch.log | grep "cross-machine"
 
 ---
 
-## Integration with Ralph Watch
+## Integration with McClane Watch
 
-Ralph automatically includes this pattern in its watch loop:
+McClane automatically includes this pattern in its watch loop:
 
 ```
-Ralph Watch Cycle (every 5-10 min):
+McClane Watch Cycle (every 5-10 min):
 1. Fetch GitHub issues with squad:machine-* labels
 2. Poll .squad/cross-machine/tasks/
 3. For each matching task:
@@ -402,7 +402,7 @@ Ralph Watch Cycle (every 5-10 min):
 5. Sleep until next cycle
 ```
 
-No manual Ralph configuration needed — just create task files or issues with the right labels.
+No manual McClane configuration needed — just create task files or issues with the right labels.
 
 ---
 
@@ -415,9 +415,9 @@ No manual Ralph configuration needed — just create task files or issues with t
 - user pastes result manually
 
 **After (with this pattern):**
-- Laptop Ralph writes task file → git push
-- DevBox Ralph auto-executes → git push result
-- Laptop Ralph auto-reads result
+- Laptop McClane writes task file → git push
+- DevBox McClane auto-executes → git push result
+- Laptop McClane auto-reads result
 - 0 human intervention needed
 
 ---
@@ -439,4 +439,4 @@ Potential expansions (Phase 2+):
 
 Refer to research report: `research/active/cross-machine-agents/README.md`
 
-Contact: Seven (Research & Docs) or Ralph (Work Monitor)
+Contact: Seven (Research & Docs) or McClane (Work Monitor)

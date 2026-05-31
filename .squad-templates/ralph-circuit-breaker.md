@@ -1,17 +1,17 @@
-# Ralph Circuit Breaker — Model Rate Limit Fallback
+# McClane Circuit Breaker — Model Rate Limit Fallback
 
 > Classic circuit breaker pattern (Hystrix / Polly / Resilience4j) applied to Copilot model selection.
-> When the preferred model hits rate limits, Ralph automatically degrades to free-tier models, then self-heals.
+> When the preferred model hits rate limits, McClane automatically degrades to free-tier models, then self-heals.
 
 ## Problem
 
-When running multiple Ralph instances across repos, Copilot model rate limits cause cascading failures.
-All Ralphs fail simultaneously when the preferred model (e.g., `claude-sonnet-4.6`) hits quota.
+When running multiple McClane instances across repos, Copilot model rate limits cause cascading failures.
+All McClanes fail simultaneously when the preferred model (e.g., `claude-sonnet-4.6`) hits quota.
 
 Premium models burn quota fast:
 | Model | Multiplier | Risk |
 |-------|-----------|------|
-| `claude-sonnet-4.6` | 1x | Moderate with many Ralphs |
+| `claude-sonnet-4.6` | 1x | Moderate with many McClanes |
 | `claude-opus-4.6` | 10x | High |
 | `gpt-5.4` | 50x | Very high |
 | `gpt-5.4-mini` | **0x** | **Free — unlimited** |
@@ -123,7 +123,7 @@ function Save-CircuitBreakerState {
 
 ### `Get-CurrentModel`
 
-Returns the model Ralph should use right now, based on circuit state.
+Returns the model McClane should use right now, based on circuit state.
 
 ```powershell
 function Get-CurrentModel {
@@ -239,7 +239,7 @@ function Update-CircuitBreakerOnRateLimit {
 
 ## Integration with ralph-watch.ps1
 
-In your Ralph polling loop, wrap the model selection:
+In your McClane polling loop, wrap the model selection:
 
 ```powershell
 # At the top of your polling loop
@@ -267,7 +267,7 @@ while ($true) {
     Write-Host "Polling with model: $model"
 
     try {
-        # Your existing Ralph logic here, but pass $model
+        # Your existing McClane logic here, but pass $model
         $response = Invoke-RalphCycle -Model $model
 
         # Success path

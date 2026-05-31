@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
 # scripts/notes/fetch.ps1
 # ─────────────────────────────────────────────────────────────────────────────
-# Fetch git notes from remote. Run on every Ralph-watch startup and before
+# Fetch git notes from remote. Run on every McClane-watch startup and before
 # any agent reads or writes notes.
 #
 # Usage:

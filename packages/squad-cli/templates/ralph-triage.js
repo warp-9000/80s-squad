@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Ralph Triage Script — Standalone CJS implementation
+ * McClane Triage Script — Standalone CJS implementation
  *
  * ⚠️ SYNC NOTICE: This file ports triage logic from the SDK source:
  *   packages/squad-sdk/src/ralph/triage.ts
@@ -114,7 +114,7 @@ function parseRoster(teamMd) {
   const roleIndex = findColumnIndex(table.headers, ['role']);
   if (nameIndex < 0 || roleIndex < 0) return [];
 
-  const excluded = new Set(['scribe', 'ralph']);
+  const excluded = new Set(['miyagi', 'mcclane']);
   const members = [];
 
   for (const row of table.rows) {

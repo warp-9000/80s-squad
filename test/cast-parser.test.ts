@@ -229,10 +229,10 @@ describe('createTeam', () => {
       expect(hasRosterEntries(content)).toBe(true);
     });
 
-    it('adds built-in Scribe and Ralph when not in proposal', async () => {
+    it('adds built-in Miyagi and McClane when not in proposal', async () => {
       const result = await createTeam(tempDir, minimalProposal);
-      expect(result.membersCreated).toContain('Scribe');
-      expect(result.membersCreated).toContain('Ralph');
+      expect(result.membersCreated).toContain('Miyagi');
+      expect(result.membersCreated).toContain('McClane');
     });
 
     it('creates agent charter and history files for each member', async () => {

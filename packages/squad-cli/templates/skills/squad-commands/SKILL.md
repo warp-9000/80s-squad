@@ -142,23 +142,23 @@ Proceed? (yes / no)
 - **args:** (none)
 - **confirm:** false
 
-### Activate Ralph
+### Activate McClane
 
 - **intent:** activate ralph, start ralph, ralph go, start work monitor, start auto-work
-- **summary:** Activate Ralph — Work Monitor — to pick up and run queued issues
+- **summary:** Activate McClane — Work Monitor — to pick up and run queued issues
 - **action:** coordinator
-- **command:** Ralph — Work Monitor triggers
+- **command:** McClane — Work Monitor triggers
 - **args:** (none)
 - **confirm:** false
 
-### Set Ralph Polling Interval
+### Set McClane Polling Interval
 
 - **intent:** set ralph interval, change ralph timing, how often does ralph check, ralph every N minutes
-- **summary:** Tell Ralph how frequently to poll for new work
+- **summary:** Tell McClane how frequently to poll for new work
 - **action:** coordinator
-- **command:** Ralph trigger: "Ralph, check every N minutes"
+- **command:** McClane trigger: "McClane, check every N minutes"
 - **args:**
-  - `interval`: How often should Ralph poll? (in minutes) | default: 10
+  - `interval`: How often should McClane poll? (in minutes) | default: 10
 - **confirm:** false
 
 ### Start Squad Watch

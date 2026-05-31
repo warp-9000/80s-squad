@@ -231,7 +231,7 @@ Run \`squad extract\` to review and merge these to your personal squad.
  * Patch the Scribe charter in the copied squad with consult mode instructions.
  */
 function patchScribeCharterForConsultMode(squadDir: string): void {
-  const charterPath = path.join(squadDir, 'agents', 'scribe', 'charter.md');
+  const charterPath = path.join(squadDir, 'agents', 'miyagi', 'charter.md');
   
   if (!storage.existsSync(charterPath)) {
     // No scribe charter to patch — skip silently

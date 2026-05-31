@@ -193,7 +193,7 @@ function buildCharterFromRole(
   lines.push('Before starting work, run `git rev-parse --show-toplevel` to find the repo root, or use the `TEAM ROOT` provided in the spawn prompt. All `.squad/` paths must be resolved relative to this root — do not assume CWD is the repo root (you may be in a worktree or subdirectory).');
   lines.push('');
   lines.push('Before starting work, read `.squad/decisions.md` for team decisions that affect me.');
-  lines.push('After making a decision others should know, write it to `.squad/decisions/inbox/{my-name}-{brief-slug}.md` — the Scribe will merge it.');
+  lines.push('After making a decision others should know, write it to `.squad/decisions/inbox/{my-name}-{brief-slug}.md` — Miyagi will merge it.');
   lines.push('If I need another team member\'s input, say so — the coordinator will bring them in.');
   lines.push('');
   lines.push(`## Voice`);

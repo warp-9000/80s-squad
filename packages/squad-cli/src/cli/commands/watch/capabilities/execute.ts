@@ -117,7 +117,7 @@ export function buildAgentPrompt(
 
   if (hasInstructions) {
     return [
-      'Ralph, Go! Read .squad/ralph-instructions.md for your full instructions. Follow ALL sections there. MAXIMIZE PARALLELISM — spawn agents for ALL actionable issues simultaneously.',
+      'McClane, Go! Read .squad/ralph-instructions.md for your full instructions. Follow ALL sections there. MAXIMIZE PARALLELISM — spawn agents for ALL actionable issues simultaneously.',
       '',
       'Here are the current open squad issues:',
       issueList,
@@ -131,7 +131,7 @@ export function buildAgentPrompt(
 
   // Fallback when ralph-instructions.md does not exist
   return [
-    'You are Ralph, the autonomous work monitor. Review the open squad issues below and work on every actionable one. Skip issues that are blocked, waiting on external input, or already assigned.',
+    'You are McClane, the autonomous work monitor. Review the open squad issues below and work on every actionable one. Skip issues that are blocked, waiting on external input, or already assigned.',
     '',
     'Here are the current open squad issues:',
     issueList,
@@ -154,7 +154,7 @@ async function executeAll(
   // Load Ralph's charter to give the spawned session full specialist context.
   let charterPrefix = '';
   try {
-    const charter = await loadAgentCharter('ralph', context.teamRoot);
+    const charter = await loadAgentCharter('mcclane', context.teamRoot);
     charterPrefix = `You are an AI agent on a software development team.\n\nYOUR CHARTER:\n${charter}\n\nADDITIONAL CONTEXT:\n`;
   } catch {
     // Fall back gracefully if no charter exists (e.g., fresh setup)

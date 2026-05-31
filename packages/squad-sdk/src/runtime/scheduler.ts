@@ -640,7 +640,7 @@ export function defaultScheduleTemplate(): ScheduleManifest {
     schedules: [
       {
         id: 'ralph-heartbeat',
-        name: 'Ralph Heartbeat',
+        name: 'McClane Heartbeat',
         enabled: true,
         trigger: { type: 'interval', intervalSeconds: 300 },
         task: { type: 'workflow', ref: '.github/workflows/squad-heartbeat.yml' },

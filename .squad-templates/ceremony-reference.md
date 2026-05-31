@@ -73,7 +73,7 @@ TASK CONTEXT:
    - `all-relevant` → agents routed to the current task
    - `all-involved` → agents that participated in the completed batch
    - Named agents → spawn only those specific agents
-6. **Scribe integration:** Spawn Scribe (background) at ceremony start to record decisions and action items.
+6. **Miyagi integration:** Spawn Miyagi (background) at ceremony start to record decisions and action items.
 7. **Output format:**
    ```
    📋 {CeremonyName} completed — facilitated by {Facilitator}.

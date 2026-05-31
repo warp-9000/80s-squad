@@ -181,6 +181,11 @@ export interface InitResult {
 /**
  * Default agent templates for common roles.
  */
+const ROLE_TITLES: Record<string, string> = {
+  scribe: 'Memory & Decisions',
+  ralph: 'Work Monitor'
+};
+
 const AGENT_TEMPLATES: Record<string, { displayName: string; description: string }> = {
   'lead': {
     displayName: 'Lead',
@@ -195,11 +200,11 @@ const AGENT_TEMPLATES: Record<string, { displayName: string; description: string
     description: 'Quality assurance specialist responsible for test coverage and validation.'
   },
   'scribe': {
-    displayName: 'Scribe',
+    displayName: 'Miyagi',
     description: 'Documentation specialist maintaining history, decisions, and technical records.'
   },
   'ralph': {
-    displayName: 'Ralph',
+    displayName: 'McClane',
     description: 'Persistent memory agent that maintains context across sessions.'
   },
   'Rai': {
@@ -524,7 +529,7 @@ function generateCharter(agent: InitAgentSpec, projectName: string, projectDescr
   const displayName = agent.displayName || template?.displayName || titleCase(agent.name);
   const description = template?.description || 'Team member focused on their assigned responsibilities.';
 
-  return `# ${displayName} — ${titleCase(agent.role)}
+  return `# ${displayName} — ${ROLE_TITLES[agent.role] || titleCase(agent.role)}
 
 ${description}
 

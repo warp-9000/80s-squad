@@ -1,4 +1,4 @@
-name: Squad Heartbeat (Ralph)
+name: Squad Heartbeat (McClane)
 # ⚠️ SYNC: This workflow is maintained in 4 locations. Changes must be applied to all:
 #   - templates/workflows/squad-heartbeat.yml (source template)
 #   - packages/squad-cli/templates/workflows/squad-heartbeat.yml (CLI package)
@@ -37,7 +37,7 @@ jobs:
             echo "⚠️ ralph-triage.js not found — run 'squad upgrade' to install"
           fi
 
-      - name: Ralph — Smart triage
+      - name: McClane — Smart triage
         if: steps.check-script.outputs.has_script == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -46,7 +46,7 @@ jobs:
             --squad-dir .squad \
             --output triage-results.json
 
-      - name: Ralph — Apply triage decisions
+      - name: McClane — Apply triage decisions
         if: steps.check-script.outputs.has_script == 'true' && hashFiles('triage-results.json') != ''
         uses: actions/github-script@v7
         with:
@@ -60,7 +60,7 @@ jobs:
             
             const results = JSON.parse(fs.readFileSync(path, 'utf8'));
             if (results.length === 0) {
-              core.info('📋 Board is clear — Ralph found no untriaged issues');
+              core.info('📋 Board is clear — McClane found no untriaged issues');
               return;
             }
             
@@ -78,13 +78,13 @@ jobs:
                   repo: context.repo.repo,
                   issue_number: decision.issueNumber,
                   body: [
-                    '### 🔄 Ralph — Auto-Triage',
+                    '### 🔄 McClane — Auto-Triage',
                     '',
                     `**Assigned to:** ${decision.assignTo}`,
                     `**Reason:** ${decision.reason}`,
                     `**Source:** ${decision.source}`,
                     '',
-                    '> Ralph auto-triaged this issue using routing rules.',
+                    '> McClane auto-triaged this issue using routing rules.',
                     '> To reassign, swap the `squad:*` label.'
                   ].join('\n')
                 });
@@ -95,10 +95,10 @@ jobs:
               }
             }
             
-            core.info(`🔄 Ralph triaged ${results.length} issue(s)`);
+            core.info(`🔄 McClane triaged ${results.length} issue(s)`);
 
       # Copilot auto-assign step (uses PAT if available)
-      - name: Ralph — Assign @copilot issues
+      - name: McClane — Assign @copilot issues
         if: success()
         uses: actions/github-script@v7
         with:

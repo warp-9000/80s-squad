@@ -6,7 +6,7 @@ confidence: "high"
 source: "extracted"
 ---
 
-# Skill: Ralph — Two-Pass Issue Scanning
+# Skill: McClane — Two-Pass Issue Scanning
 **Confidence:** high
 **Domain:** work-monitoring
 **Last validated:** 2026-03-24
@@ -40,4 +40,4 @@ For each issue surviving Pass 1:
 gh issue view <number> --json number,title,body,labels,assignees,comments,state
 ```
 
-Then apply normal Ralph triage logic. Rule of thumb: hydrate ≤ 30% of scanned list. If more than 30% survive Pass 1, tighten filter rules.
+Then apply normal McClane triage logic. Rule of thumb: hydrate ≤ 30% of scanned list. If more than 30% survive Pass 1, tighten filter rules.

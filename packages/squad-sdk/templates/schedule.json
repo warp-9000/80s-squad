@@ -3,7 +3,7 @@
   "schedules": [
     {
       "id": "ralph-heartbeat",
-      "name": "Ralph Heartbeat",
+      "name": "McClane Heartbeat",
       "enabled": true,
       "trigger": {
         "type": "interval",

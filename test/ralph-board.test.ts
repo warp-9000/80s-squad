@@ -84,7 +84,7 @@ describe('watch board reporting', () => {
       9,
     );
 
-    expect(output.join('\n')).toContain('Ralph — Round 9');
+    expect(output.join('\n')).toContain('McClane — Round 9');
   });
 });
 

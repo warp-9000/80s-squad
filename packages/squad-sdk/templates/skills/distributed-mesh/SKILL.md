@@ -236,7 +236,7 @@ Create a decision file at `.squad/decisions/inbox/<your-agent-name>-mesh-setup.m
 **Why:** <user's stated reason for setting up the mesh, or "Enable cross-machine squad coordination">
 ```
 
-Write this file. The Scribe will merge it into the main decisions file later.
+Write this file. The Miyagi will merge it into the main decisions file later.
 
 ### Step 6: STOP
 

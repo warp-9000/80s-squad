@@ -17,7 +17,7 @@ Squad state has two layers:
 2. **Permanent state layer** — long-lived decisions, routing rules, and archives
    stored via the configured state backend (`git-notes` or `orphan` branch).
 
-Agents write notes during their work rounds. Ralph promotes flagged notes to
+Agents write notes during their work rounds. McClane promotes flagged notes to
 permanent state after a PR merges.
 
 ---
@@ -31,7 +31,7 @@ Each agent writes to its own namespace to prevent conflicts:
 | `refs/notes/squad/data` | Data | Architecture decisions, implementation choices |
 | `refs/notes/squad/worf` | Worf | Security reviews, vulnerability assessments |
 | `refs/notes/squad/seven` | Seven | Documentation quality, API contract decisions |
-| `refs/notes/squad/ralph` | Ralph | Work-round progress, task-state annotations |
+| `refs/notes/squad/ralph` | McClane | Work-round progress, task-state annotations |
 | `refs/notes/squad/q` | Q | Devil's advocate findings, risk assessments |
 | `refs/notes/squad/research` | Any agent | Research notes that should survive branch deletion |
 | `refs/notes/squad/review` | Any agent | Code review context (mirrors Gerrit's pattern) |
@@ -69,7 +69,7 @@ All notes MUST be valid JSON. Minimum required fields:
 }
 ```
 
-Set `"promote_to_permanent": true` to signal Ralph to copy this to
+Set `"promote_to_permanent": true` to signal McClane to copy this to
 `decisions.md` after the PR merges.
 
 ### Research notes
@@ -86,7 +86,7 @@ Set `"promote_to_permanent": true` to signal Ralph to copy this to
 }
 ```
 
-Set `"archive_on_close": true` to signal Ralph to archive this to
+Set `"archive_on_close": true` to signal McClane to archive this to
 `state/research/` even if the PR is rejected.
 
 ---
@@ -180,12 +180,12 @@ Or use the helper:
 | Security sign-offs per commit | Agent history persisting across features |
 | Agent-to-agent context for current feature | Team agreements and policies |
 
-When in doubt: **notes first, promote to permanent state later.** Ralph handles
+When in doubt: **notes first, promote to permanent state later.** McClane handles
 the promotion automatically when `promote_to_permanent` is set.
 
 ---
 
-## Ralph Promotion Rules
+## McClane Promotion Rules
 
 **After PR merge:**
 

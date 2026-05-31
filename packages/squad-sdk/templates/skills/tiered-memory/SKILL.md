@@ -20,14 +20,14 @@ Squad agents currently load their full context history on every spawn, resulting
 - **Size target:** ~2–4KB
 - **Load policy:** Always loaded. Every spawn includes hot memory by default.
 - **Contents:** Current task description, active decisions made this session, immediate blockers, last 3–5 actions taken, who you are talking to right now.
-- **Lifetime:** Current session only. Discarded after session ends (Scribe promotes relevant parts to Cold).
+- **Lifetime:** Current session only. Discarded after session ends (Miyagi promotes relevant parts to Cold).
 - **Purpose:** Provide immediate task context without any latency or load decision.
 
 ### ❄️ Cold Tier — Summarized Cross-Session History
 - **Size target:** ~8–12KB
 - **Load policy:** Load on demand. Include only when the task explicitly needs history.
-- **Contents:** Summarized past sessions (compressed by Scribe), cross-session decisions, recurring patterns, unresolved issues from prior work.
-- **Lifetime:** 30 days rolling window. After 30 days, Scribe promotes to Wiki tier.
+- **Contents:** Summarized past sessions (compressed by Miyagi), cross-session decisions, recurring patterns, unresolved issues from prior work.
+- **Lifetime:** 30 days rolling window. After 30 days, Miyagi promotes to Wiki tier.
 - **Purpose:** Answer "what have we tried before?" and "what was decided?" without replaying full transcripts.
 - **How to include:** Pass `--include-cold` in spawn template or add `## Cold Memory` section.
 
@@ -96,31 +96,31 @@ Baseline measurements from tamirdresher/tamresearch1 production runs (June 2025)
 | Agent | Total Context | Old Noise % | Hot-Only Size | Savings |
 |-------|--------------|-------------|---------------|---------|
 | Picard (Lead) | 74KB / 18.5K tokens | 96% | ~3KB | 55% |
-| Scribe | 52KB / 13K tokens | 91% | ~4KB | 48% |
+| Miyagi | 52KB / 13K tokens | 91% | ~4KB | 48% |
 | Data | 43KB / 10.7K tokens | 88% | ~3.5KB | 42% |
-| Ralph | 38KB / 9.5K tokens | 85% | ~3KB | 38% |
+| McClane | 38KB / 9.5K tokens | 85% | ~3KB | 38% |
 | Worf | 34KB / 8.5K tokens | 82% | ~3KB | 20% |
 
 **Average savings: 20–55% per spawn** with Hot-only loading. Cold + Wiki on-demand adds ~2–8KB when needed, still well below current baselines.
 
 ---
 
-## Integration with Scribe Agent
+## Integration with Miyagi Agent
 
-Scribe is the memory coordinator for this system. It automates tier promotion:
+Miyagi is the memory coordinator for this system. It automates tier promotion:
 
-1. **End of session:** Scribe compresses Hot → Cold summary (keeps ~10% of session verbosity)
-2. **After 30 days:** Scribe promotes Cold → Wiki for decisions/facts that aged into stable knowledge
-3. **On-demand wiki writes:** Any agent can request Scribe to write a wiki entry mid-session using `scribe:wiki-write`
+1. **End of session:** Miyagi compresses Hot → Cold summary (keeps ~10% of session verbosity)
+2. **After 30 days:** Miyagi promotes Cold → Wiki for decisions/facts that aged into stable knowledge
+3. **On-demand wiki writes:** Any agent can request Miyagi to write a wiki entry mid-session using `scribe:wiki-write`
 
-See Scribe charter: `.squad/agents/scribe/charter.md`
+See Miyagi charter: `.squad/agents/scribe/charter.md`
 
 ---
 
 ## Implementation Checklist
 
-- [ ] Scribe writes Hot context file at session start (`.squad/memory/hot/{agent}.md`)
-- [ ] Scribe compresses and writes Cold summary at session end
+- [ ] Miyagi writes Hot context file at session start (`.squad/memory/hot/{agent}.md`)
+- [ ] Miyagi compresses and writes Cold summary at session end
 - [ ] Spawn templates default to Hot-only
 - [ ] Coordinators add `--include-cold` / `--include-wiki` flags as needed
 - [ ] Wiki entries stored in `.squad/memory/wiki/`

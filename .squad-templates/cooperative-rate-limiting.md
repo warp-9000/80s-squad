@@ -1,13 +1,13 @@
 # Cooperative Rate Limiting for Multi-Agent Deployments
 
-> Coordinate API quota across multiple Ralph instances to prevent cascading failures.
+> Coordinate API quota across multiple McClane instances to prevent cascading failures.
 
 ## Problem
 
-The [circuit breaker template](ralph-circuit-breaker.md) handles single-instance rate limiting well. But when multiple Ralphs run across machines (or pods on K8s), each instance independently hits API limits:
+The [circuit breaker template](ralph-circuit-breaker.md) handles single-instance rate limiting well. But when multiple McClanes run across machines (or pods on K8s), each instance independently hits API limits:
 
-- **No coordination** — 5 Ralphs each think they have full API quota
-- **Thundering herd** — All Ralphs retry simultaneously after rate limit resets
+- **No coordination** — 5 McClanes each think they have full API quota
+- **Thundering herd** — All McClanes retry simultaneously after rate limit resets
 - **Priority inversion** — Low-priority work exhausts quota before critical work runs
 - **Reactive only** — Circuit opens AFTER 429, wasting the failed request
 
@@ -61,7 +61,7 @@ A shared JSON file (`~/.squad/rate-pool.json`) distributes API quota:
 **Rules:**
 - P0 agents (Lead) get 40% of quota
 - P1 agents (specialists) get 35%
-- P2 agents (Ralph, Scribe) get 25%
+- P2 agents (McClane, Miyagi) get 25%
 - Stale leases (>5 minutes without heartbeat) are auto-recovered
 - Each agent checks their remaining allocation before making API calls
 
@@ -151,7 +151,7 @@ Non-overlapping jitter windows prevent thundering herd:
 |----------|-------------|-------------|
 | P0 (Lead) | 500ms–5s | Recovers first |
 | P1 (Specialists) | 2s–30s | Moderate delay |
-| P2 (Ralph/Scribe) | 5s–60s | Most patient |
+| P2 (McClane/Miyagi) | 5s–60s | Most patient |
 
 ```typescript
 function getRetryDelay(priority: number, attempt: number): number {

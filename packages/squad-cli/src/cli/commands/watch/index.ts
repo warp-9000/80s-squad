@@ -208,13 +208,13 @@ export function reportBoard(state: BoardState, round: number, options?: ReportBo
   if (level === 'important' && total === 0) return;
 
   if (total === 0) {
-    console.log(`${DIM}📋 Board is clear — Ralph is idling${RESET}`);
+    console.log(`${DIM}📋 Board is clear — McClane is idling${RESET}`);
     return;
   }
   const suffix = options?.machineName || options?.repoName
     ? ` (${[options.machineName, options.repoName].filter(Boolean).join(' · ')})`
     : '';
-  console.log(`\n${BOLD}🔄 Ralph — Round ${round}${suffix}${RESET}`);
+  console.log(`\n${BOLD}🔄 McClane — Round ${round}${suffix}${RESET}`);
   console.log('━'.repeat(30));
   if (state.untriaged > 0) console.log(`  🔴 Untriaged:         ${state.untriaged}`);
   if (state.assigned > 0) console.log(`  🟡 Assigned:          ${state.assigned}`);
@@ -641,7 +641,7 @@ export async function executeIssue(
   const ts = new Date().toLocaleTimeString();
   const timeoutMs = (options.issueTimeoutMinutes ?? 30) * 60_000;
   try { await editWorkItem(adapter, issue.number, { addAssignee: '@me' }); } catch { /* best-effort */ }
-  try { await adapter.addComment(issue.number, '🤖 Ralph: starting autonomous work on this issue.'); } catch { /* best-effort */ }
+  try { await adapter.addComment(issue.number, '🤖 McClane: starting autonomous work on this issue.'); } catch { /* best-effort */ }
   const { cmd, args } = buildAgentCommand(issue, teamRoot, options);
   console.log(`${GREEN}▶${RESET} [${ts}] Executing #${issue.number} "${issue.title}" → ${cmd} ${args.join(' ')}`);
   return new Promise((resolve) => {
@@ -778,7 +778,7 @@ export async function runWatch(dest: string, options: WatchOptions | WatchConfig
   await monitor.start(eventBus);
   await eventBus.emit({
     type: 'session:created', sessionId: monitorSessionId,
-    agentName: 'Ralph', payload: { interval }, timestamp: new Date(),
+    agentName: 'McClane', payload: { interval }, timestamp: new Date(),
   });
 
   // ── Capability system setup ────────────────────────────────────
@@ -818,7 +818,7 @@ export async function runWatch(dest: string, options: WatchOptions | WatchConfig
   // Print startup banner
   const modeTag = config.execute ? ` ${BOLD}(Execute)${RESET}` : '';
   const platformTag = ` [${adapter.type}]`;
-  console.log(`\n${BOLD}🔄 Ralph — Watch Mode${RESET}${modeTag}${platformTag}`);
+  console.log(`\n${BOLD}🔄 McClane — Watch Mode${RESET}${modeTag}${platformTag}`);
   console.log(`${DIM}Polling every ${interval} minute(s) for squad work. Ctrl+C to stop.${RESET}`);
   if (config.execute && config.copilotFlags) {
     console.log(`${DIM}Copilot flags: ${config.copilotFlags}${RESET}`);
@@ -952,7 +952,7 @@ export async function runWatch(dest: string, options: WatchOptions | WatchConfig
 
     await eventBus.emit({
       type: 'agent:milestone', sessionId: monitorSessionId,
-      agentName: 'Ralph',
+      agentName: 'McClane',
       payload: { milestone: `Completed watch round ${round}`, task: 'watch cycle' },
       timestamp: new Date(),
     });
@@ -1036,11 +1036,11 @@ export async function runWatch(dest: string, options: WatchOptions | WatchConfig
       process.off('SIGTERM', shutdown);
       await eventBus.emit({
         type: 'session:destroyed', sessionId: monitorSessionId,
-        agentName: 'Ralph', payload: null, timestamp: new Date(),
+        agentName: 'McClane', payload: null, timestamp: new Date(),
       });
       await monitor.stop();
       saveCBState(squadDirInfo.path, cbState);
-      console.log(`\n${DIM}🔄 Ralph — Watch stopped${RESET}`);
+      console.log(`\n${DIM}🔄 McClane — Watch stopped${RESET}`);
       logStream?.end();
       resolve();
     };

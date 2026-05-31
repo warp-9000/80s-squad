@@ -181,7 +181,7 @@ describe('Watch Capabilities', () => {
         ];
         const prompt = buildAgentPrompt(issues, '/fake/team');
         expect(prompt).toContain('ralph-instructions.md');
-        expect(prompt).toContain('Ralph, Go!');
+        expect(prompt).toContain('McClane, Go!');
       });
 
       it('uses fallback prompt when ralph-instructions.md is missing', () => {
