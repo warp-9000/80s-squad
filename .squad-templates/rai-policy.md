@@ -1,6 +1,6 @@
 # RAI Policy
 
-> Responsible AI policy for this project. Rai enforces these standards.
+> Responsible AI policy for this project. Yoda enforces these standards.
 
 ## Principles
 
@@ -91,8 +91,8 @@ These are recommendations. Work proceeds with suggestions attached.
 2. **🟡 Yellow** — Suggestions attached to work output. Author decides.
 3. **🔴 Red** — Work blocked. Reviewer Rejection Protocol activates:
    - Original author locked out of revision
-   - Rai recommends fix agent
-   - Rai provides pair-mode guidance during revision
+   - Yoda recommends fix agent
+   - Yoda provides pair-mode guidance during revision
    - Re-review required before work can ship
 
 ## Policy Updates

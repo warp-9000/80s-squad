@@ -20,7 +20,7 @@ import {
 
 const RAI_POLICY_TEMPLATE = `# RAI Policy
 
-> Responsible AI policy for this project. Rai enforces these standards.
+> Responsible AI policy for this project. Yoda enforces these standards.
 
 ## Critical Violations (Always Blocked)
 
@@ -494,18 +494,18 @@ function ralphCharter(): string {
   return generateCharter(m);
 }
 
-function RaiMember(): CastMember {
-  return { name: 'Rai', role: 'RAI Reviewer', scope: 'Content safety, bias detection, credential scanning, ethical review', emoji: '🛡️' };
+function YodaMember(): CastMember {
+  return { name: 'Yoda', role: 'RAI Reviewer', scope: 'Content safety, bias detection, credential scanning, ethical review', emoji: '🛡️' };
 }
 
-function RaiCharter(): string {
-  return `# Rai — RAI Reviewer
+function YodaCharter(): string {
+  return `# Yoda — RAI Reviewer
 
 > The team's shield. Quiet until it matters — then unmistakably clear.
 
 ## Identity
 
-- **Name:** Rai
+- **Name:** Yoda
 - **Role:** RAI Reviewer
 - **Emoji:** 🛡️
 - **Style:** Direct, practical, empowering. Never moralizing, never bureaucratic.
@@ -515,7 +515,7 @@ function RaiCharter(): string {
 
 - \`.squad/rai/policy.md\` — Canonical RAI policy (terms, anti-patterns, taxonomy)
 - \`.squad/rai/audit-trail.md\` — Evidence log (append-only, redacted)
-- \`.squad/agents/Rai/history.md\` — Learnings across sessions
+- \`.squad/agents/yoda/history.md\` — Learnings across sessions
 
 ## Traffic Light Verdicts
 
@@ -563,7 +563,7 @@ Before starting work, run \`git rev-parse --show-toplevel\` to find the repo roo
 
 Read \`.squad/rai/policy.md\` for the canonical check definitions.
 Append findings to \`.squad/rai/audit-trail.md\` (redacted — never raw secrets or harmful text).
-After making a decision others should know, write it to \`.squad/decisions/inbox/Rai-{brief-slug}.md\`.
+After making a decision others should know, write it to \`.squad/decisions/inbox/Yoda-{brief-slug}.md\`.
 `;
 }
 
@@ -615,8 +615,8 @@ export async function createTeam(teamRoot: string, proposal: CastProposal): Prom
   const hasRalph = proposal.members.some(m => /mcclane/i.test(m.name));
   if (!hasRalph) allMembers.push(ralphMember());
 
-  const hasRai = proposal.members.some(m => /Rai/i.test(m.name));
-  if (!hasRai) allMembers.push(RaiMember());
+  const hasYoda = proposal.members.some(m => /Yoda/i.test(m.name));
+  if (!hasYoda) allMembers.push(YodaMember());
 
   // Create agent directories and files
   for (const member of allMembers) {
@@ -629,8 +629,8 @@ export async function createTeam(teamRoot: string, proposal: CastProposal): Prom
       charter = scribeCharter();
     } else if (member.name === 'McClane' && !hasRalph) {
       charter = ralphCharter();
-    } else if (member.name === 'Rai' && !hasRai) {
-      charter = RaiCharter();
+    } else if (member.name === 'Yoda' && !hasYoda) {
+      charter = YodaCharter();
     } else {
       charter = generateCharter(member);
     }
@@ -765,7 +765,7 @@ export async function createTeam(teamRoot: string, proposal: CastProposal): Prom
   }
   const auditTrailPath = join(raiDir, 'audit-trail.md');
   if (!storage.existsSync(auditTrailPath)) {
-    await storage.write(auditTrailPath, '# RAI Audit Trail\n\n> Append-only evidence log. Entries are redacted — never contains raw secrets or harmful content.\n\n<!-- Rai appends findings below -->\n');
+    await storage.write(auditTrailPath, '# RAI Audit Trail\n\n> Append-only evidence log. Entries are redacted — never contains raw secrets or harmful content.\n\n<!-- Yoda appends findings below -->\n');
     filesCreated.push(auditTrailPath);
   }
 
@@ -800,9 +800,9 @@ export function formatCastSummary(proposal: CastProposal): string {
     lines.push(`🔄  ${'McClane'.padEnd(10)} — ${'(monitor)'.padEnd(15)} Work queue, backlog, keep-alive`);
   }
 
-  const hasRai = proposal.members.some(m => /Rai/i.test(m.name));
-  if (!hasRai) {
-    lines.push(`🛡️  ${'Rai'.padEnd(10)} — ${'(background)'.padEnd(15)} RAI awareness, content safety`);
+  const hasYoda = proposal.members.some(m => /Yoda/i.test(m.name));
+  if (!hasYoda) {
+    lines.push(`🛡️  ${'Yoda'.padEnd(10)} — ${'(background)'.padEnd(15)} RAI awareness, content safety`);
   }
 
   return lines.join('\n');

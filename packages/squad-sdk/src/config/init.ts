@@ -183,7 +183,8 @@ export interface InitResult {
  */
 const ROLE_TITLES: Record<string, string> = {
   scribe: 'Memory & Decisions',
-  ralph: 'Work Monitor'
+  ralph: 'Work Monitor',
+  Rai: 'RAI Reviewer'
 };
 
 const AGENT_TEMPLATES: Record<string, { displayName: string; description: string }> = {
@@ -208,7 +209,7 @@ const AGENT_TEMPLATES: Record<string, { displayName: string; description: string
     description: 'Persistent memory agent that maintains context across sessions.'
   },
   'Rai': {
-    displayName: 'Rai',
+    displayName: 'Yoda',
     description: 'Responsible AI reviewer ensuring content safety, bias detection, and ethical standards.'
   },
   'fact-checker': {
@@ -876,7 +877,7 @@ export async function initSquad(options: InitOptions, storage: StorageProvider =
     } else {
       const raiPolicyFallback = `# RAI Policy
 
-> Responsible AI policy for this project. Rai enforces these standards.
+> Responsible AI policy for this project. Yoda enforces these standards.
 
 ## Critical Violations (Always Blocked)
 
@@ -920,7 +921,7 @@ export async function initSquad(options: InitOptions, storage: StorageProvider =
   if (!storage.existsSync(raiAuditTrailPath)) {
     await storage.write(
       raiAuditTrailPath,
-      '# RAI Audit Trail\n\n> Append-only evidence log. Entries are redacted — never contains raw secrets or harmful content.\n\n<!-- Rai appends findings below -->\n',
+      '# RAI Audit Trail\n\n> Append-only evidence log. Entries are redacted — never contains raw secrets or harmful content.\n\n<!-- Yoda appends findings below -->\n',
     );
     createdFiles.push(toRelativePath(raiAuditTrailPath));
   } else {

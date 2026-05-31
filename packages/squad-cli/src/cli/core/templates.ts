@@ -131,10 +131,10 @@ export const TEMPLATE_MANIFEST: TemplateFile[] = [
     description: 'Miyagi charter template',
   },
   {
-    source: 'Rai-charter.md',
-    destination: 'Rai-charter.md',
+    source: 'rai-charter.md',
+    destination: 'rai-charter.md',
     overwriteOnUpgrade: true,
-    description: 'Rai RAI reviewer charter template',
+    description: 'Yoda RAI reviewer charter template',
   },
   {
     source: 'rai-policy.md',
